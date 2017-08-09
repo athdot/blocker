@@ -7,6 +7,7 @@ if (window.innerWidth > window.innerHeight) {
     c.width = window.innerWidth;
     c.height = window.innerWidth;
 }
+c.id = "canvas";
 c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f";
 var ctx = c.getContext("2d");
 var linerunner = 1;
@@ -86,7 +87,7 @@ cs.width = "10";
 cs.height = "10";
 cs.style = "background-color: rgb(31,31,31)";
 
-function theCircle(x,y,radius,color,returnme){
+function theCircle(x,y,radius,color){
 var faded = blend_colors(color, '#111111', .5)
 var ctxs = cs.getContext("2d");
 ctxs.beginPath();
@@ -128,6 +129,13 @@ var a = datapix.substring(b.length+1,datapix.length);
 runt += 1;
 }
 
+if(a == 0){
+var r = 31;
+var g = 31;
+var b = 31;
+var a = 255;
+}
+
 myColor(xrun + 1, yrun + 1, r, g, b, a);
 
 var yrun = yrun + 1;
@@ -144,7 +152,7 @@ function int_to_hex(num)
     return hex;
 }
 
-function myColor(place, placey, colred, colgrn, colblu, opacit) {
+function myColor(place, placey, colred, colgrn, colblu, opacit) { 
     document.getElementById("red" + place + "-" + placey).innerHTML = colred;
     document.getElementById("blue" + place + "-" + placey).innerHTML = colblu;
     document.getElementById("green" + place + "-" + placey).innerHTML = colgrn;
@@ -154,6 +162,21 @@ function myColor(place, placey, colred, colgrn, colblu, opacit) {
 }
 setTimeout(restOscript, 1500);
 
+function drawCirc(px,py,col){
+var width = 1;
+var runinter = setInterval(function(){
+if(width > 15){
+clearInterval(runinter);
+console.log("done");
+}
+ctx.clearRect(0, 0, c.width, c.height);
+theCircle(px,py,width,col);
+width += 1;
+},200);
+}
+
 function restOscript() {
-theCircle(5,5,4,"#32cd32",1);
+
+drawCirc(5,5,"#32cd32");
+
 }
