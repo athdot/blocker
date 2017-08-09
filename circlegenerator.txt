@@ -1,0 +1,21 @@
+<body>
+<script>
+var x = 5;
+var y = 5;
+var radius = 1;
+//circle maker
+var c = document.createElement("canvas");
+c.width = "10";
+c.height = "10";
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(x, y, radius, 0, 2 * Math.PI);
+ctx.stroke();
+var src = c.toDataURL();
+var imag = document.createElement("img");
+imag.src = src;
+imag.width = "200";
+document.body.appendChild(imag);
+
+</script>
+</body>
