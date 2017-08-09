@@ -37,26 +37,20 @@ while (w < 11) {
         blue.style = "display:none; width: 0; height: 0;";
         blue.id = "blue" + square;
         blue.innerHTML = "31";
-        var opacity = document.createElement("div");
-        opacity.style = "display:none; width: 0; height: 0;";
-        opacity.id = "opacity" + square;
-        opacity.innerHTML = "255";
         document.body.appendChild(red);
         document.body.appendChild(green);
         document.body.appendChild(blue);
-        document.body.appendChild(opacity);
         var h = h + 1;
     }
     var h = 1;
     var w = w + 1;
 }
 
-function myColor(place, placey, colred, colgrn, colblu, opacit) {
+function myColor(place, placey, colred, colgrn, colblu) {
     document.getElementById("red" + place + "-" + placey).innerHTML = colred;
     document.getElementById("blue" + place + "-" + placey).innerHTML = colblu;
     document.getElementById("green" + place + "-" + placey).innerHTML = colgrn;
-    document.getElementById("opacity" + place + "-" + placey).innerHTML = opacit;
-    ctx.fillStyle = "rgba(" + document.getElementById("red" + place + "-" + placey).innerHTML + "," + document.getElementById("green" + place + "-" + placey).innerHTML + "," + document.getElementById("blue" + place + "-" + placey).innerHTML + "," + document.getElementById("opacity" + place + "-" + placey).innerHTML + ")"
+    ctx.fillStyle = "rgb(" + document.getElementById("red" + place + "-" + placey).innerHTML + "," + document.getElementById("green" + place + "-" + placey).innerHTML + "," + document.getElementById("blue" + place + "-" + placey).innerHTML + ")"
     ctx.fillRect((c.width / 10 * (place - 1)) + c.width / 1000, (c.height / 10 * (placey - 1)) + c.width / 1000, c.width / 10 - c.width / 500, c.width / 10 - c.width / 500);
 }
 setTimeout(restOscript, 1500);
