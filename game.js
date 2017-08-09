@@ -51,6 +51,99 @@ while (w < 11) {
     var w = w + 1;
 }
 
+function blend_colors(color1, color2, percentage)
+{
+    color1 = color1 || '#000000';
+    color2 = color2 || '#ffffff';
+    percentage = percentage || 0.5;
+    if (color1.length != 4 && color1.length != 7)
+        throw new error('colors must be provided as hexes');
+    if (color2.length != 4 && color2.length != 7)
+        throw new error('colors must be provided as hexes');    
+    if (percentage > 1 || percentage < 0)
+        throw new error('percentage must be between 0 and 1');
+    if (color1.length == 4)
+        color1 = color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3];
+    else
+        color1 = color1.substring(1);
+    if (color2.length == 4)
+        color2 = color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3];
+    else
+        color2 = color2.substring(1);   
+    color1 = [parseInt(color1[0] + color1[1], 16), parseInt(color1[2] + color1[3], 16), parseInt(color1[4] + color1[5], 16)];
+    color2 = [parseInt(color2[0] + color2[1], 16), parseInt(color2[2] + color2[3], 16), parseInt(color2[4] + color2[5], 16)];
+    var color3 = [ 
+        (1 - percentage) * color1[0] + percentage * color2[0], 
+        (1 - percentage) * color1[1] + percentage * color2[1], 
+        (1 - percentage) * color1[2] + percentage * color2[2]
+    ];
+    color3 = '#' + int_to_hex(color3[0]) + int_to_hex(color3[1]) + int_to_hex(color3[2]);
+    return color3;
+}
+
+var cs = document.createElement("canvas");
+cs.width = "10";
+cs.height = "10";
+cs.style = "background-color: rgb(31,31,31)";
+
+function theCircle(x,y,radius,color,returnme){
+var faded = blend_colors(color, '#111111', .5)
+var ctxs = cs.getContext("2d");
+ctxs.beginPath();
+ctxs.arc(x, y, radius, 0, 2 * Math.PI);
+ctxs.strokeStyle = color;
+ctxs.stroke();
+ctxs.beginPath();
+ctxs.arc(x, y, radius-1, 0, 2 * Math.PI);
+ctxs.strokeStyle = faded;
+ctxs.stroke();
+
+var xrun = 0;
+var yrun = 0;
+while(xrun < 10){
+while(yrun < 10){
+datapix = ctxs.getImageData(xrun,yrun, 1, 1).data;
+var datapix = datapix.toString();
+var runt = 0;
+var runty = 0;
+while(runt < datapix.length){
+if(datapix.substring(runt,runt+1) === ","){
+if(runty == 0){
+var r = datapix.substring(0,runt);
+runty += 1;
+}else if(runty == 1){
+var g = datapix.substring(r.length+1,runt);
+runty += 1;
+datapix = datapix.substring(runt+1,datapix.length);
+}
+}
+runt = runt + 1;
+}
+var runt = 0;
+while(runt < datapix.length){
+if(datapix.substring(runt,runt+1) === ","){
+var b = datapix.substring(0,runt);
+var a = datapix.substring(b.length+1,datapix.length);
+}
+runt += 1;
+}
+
+myColor(xrun + 1, yrun + 1, r, g, b, a);
+
+var yrun = yrun + 1;
+}
+var yrun = 0;
+var xrun = xrun + 1;
+}
+}
+function int_to_hex(num)
+{
+    var hex = Math.round(num).toString(16);
+    if (hex.length == 1)
+        hex = '0' + hex;
+    return hex;
+}
+
 function myColor(place, placey, colred, colgrn, colblu, opacit) {
     document.getElementById("red" + place + "-" + placey).innerHTML = colred;
     document.getElementById("blue" + place + "-" + placey).innerHTML = colblu;
@@ -62,8 +155,5 @@ function myColor(place, placey, colred, colgrn, colblu, opacit) {
 setTimeout(restOscript, 1500);
 
 function restOscript() {
-    myColor(5, 5, 255, 255, 255, 255);
-    myColor(5, 6, 255, 255, 255, 255);
-    myColor(6, 6, 255, 255, 255, 255);
-    myColor(6, 5, 255, 255, 255, 255);
+theCircle(5,5,4,"#32cd32",1);
 }
