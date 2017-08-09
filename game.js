@@ -8,7 +8,7 @@ if (window.innerWidth > window.innerHeight) {
     c.height = window.innerWidth;
 }
 c.id = "canvas";
-c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f";
+c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 10px 10px 5px grey;";
 var ctx = c.getContext("2d");
 var linerunner = 1;
 while (linerunner <= 9) {
