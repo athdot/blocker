@@ -3,12 +3,14 @@ var c = document.createElement("canvas");
 if (window.innerWidth > window.innerHeight) {
     c.width = window.innerHeight;
     c.height = window.innerHeight;
+    var spread = (window.innerHeight-c.height)/2
 } else {
     c.width = window.innerWidth;
     c.height = window.innerWidth;
+    var spread = (window.innerWidth-c.width)/2
 }
 c.id = "canvas";
-c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px 30px 20px rgb(100,100,100);";
+c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px 30px " + spread + "px rgb(100,100,100);";
 var ctx = c.getContext("2d");
 var linerunner = 1;
 while (linerunner <= 9) {
