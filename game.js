@@ -177,6 +177,6 @@ width += 1;
 
 function restOscript() {
 
-drawCirc(5,5,"#32cd32");
+drawCirc(5,5,"#00FFFF");
 
 }
