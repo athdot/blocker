@@ -3,11 +3,11 @@ var c = document.createElement("canvas");
 if (window.innerWidth > window.innerHeight) {
     c.width = window.innerHeight;
     c.height = window.innerHeight;
-    var spread = (window.innerHeight-c.height)/2
+    var spread = (window.innerWidth-c.width)/2
 } else {
     c.width = window.innerWidth;
     c.height = window.innerWidth;
-    var spread = (window.innerWidth-c.width)/2
+    var spread = (window.innerHeight-c.height)/2
 }
 console.log(spread);
 c.id = "canvas";
