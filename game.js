@@ -12,16 +12,6 @@ if (window.innerWidth > window.innerHeight) {
 c.id = "canvas";
 c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
 var ctx = c.getContext("2d");
-var linerunner = 1;
-while (linerunner <= 9) {
-    ctx.fillRect((c.width / 10) * linerunner, 0, 1, window.innerHeight);
-    var linerunner = linerunner + 1;
-}
-var linerunner = 1;
-while (linerunner <= 9) {
-    ctx.fillRect(0, (c.height / 10) * linerunner, window.innerHeight, 1);
-    var linerunner = linerunner + 1;
-}
 document.body.appendChild(c);
 var w = 1;
 var h = 1;
