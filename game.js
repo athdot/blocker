@@ -1,22 +1,49 @@
 document.body.style.backgroundColor = "black";
 var c = document.createElement("canvas");
 if (window.innerWidth > window.innerHeight) {
-    c.width = window.innerHeight;
+var wh = window.innerHeight;
+if(wh < 400){
+var sqh = 5;
+}else if(wh < 600){
+var sqh = 7;
+}else if(wh < 1200){
+var sqh = 10;
+}else{
+var sqh = 12;
+}
+var squaresize = window.innerHeight/sqh;
+var sqw = Math.floor(window.innerWidth/squaresize);
+    c.width = (window.innerHeight/sqh)*sqw;
     c.height = window.innerHeight;
     var spread = (window.innerWidth-c.width)/2
+c.style = "position: absolute; top: 50%; left: 100%; transform:translate(-100%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
+var num = sqw;
 } else {
+var ww = window.innerWidth;
+if(ww < 400){
+var sqw = 5;
+}else if(ww < 600){
+var sqw = 7;
+}else if(ww < 1200){
+var sqw = 10;
+}else{
+var sqw = 12;
+}
+var squaresize = window.innerHeight/sqh;
+var sqw = Math.floor(window.innerWidth/squaresize);
     c.width = window.innerWidth;
-    c.height = window.innerWidth;
+    c.height =  (window.innerWidth/sqw)*sqh;
     var spread = (window.innerHeight-c.height)/2
+c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
+var num = sqh;
 }
 c.id = "canvas";
-c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
 var ctx = c.getContext("2d");
 document.body.appendChild(c);
 var w = 1;
 var h = 1;
-while (w < 11) {
-    while (h < 11) {
+while (w < (sqw+1)) {
+    while (h < (sqh+1)) {
         var square = w + "-" + h;
         var red = document.createElement("div");
         red.style = "display:none; width: 0; height: 0;";
@@ -75,14 +102,15 @@ function blend_colors(color1, color2, percentage)
 }
 
 var cs = document.createElement("canvas");
-cs.width = "10";
-cs.height = "10";
+cs.width = sqw;
+cs.height = sqh;
 cs.style = "background-color: rgb(31,31,31)";
 
 function theCircle(x,y,radius,color){
 var faded = blend_colors(color, '#111111', .5)
 var ctxs = cs.getContext("2d");
-ctxs.clearRect(0, 0, cs.width, cs.height);
+ctxs.fillStyle = ("#1f1f1f");
+ctxs.fillRect(0,0,cs.width, cs.height);
 ctxs.beginPath();
 ctxs.arc(x, y, radius, 0, 2 * Math.PI);
 ctxs.strokeStyle = color;
@@ -94,8 +122,8 @@ ctxs.stroke();
 
 var xrun = 0;
 var yrun = 0;
-while(xrun < 10){
-while(yrun < 10){
+while(xrun < sqw){
+while(yrun < sqh){
 datapix = ctxs.getImageData(xrun,yrun, 1, 1).data;
 var datapix = datapix.toString();
 var runt = 0;
@@ -151,25 +179,25 @@ function myColor(place, placey, colred, colgrn, colblu, opacit) {
     document.getElementById("green" + place + "-" + placey).innerHTML = colgrn;
     document.getElementById("opacity" + place + "-" + placey).innerHTML = opacit;
     ctx.fillStyle = "rgba(" + document.getElementById("red" + place + "-" + placey).innerHTML + "," + document.getElementById("green" + place + "-" + placey).innerHTML + "," + document.getElementById("blue" + place + "-" + placey).innerHTML + "," + document.getElementById("opacity" + place + "-" + placey).innerHTML + ")"
-    ctx.fillRect((c.width / 10 * (place - 1)) + c.width / 1000, (c.height / 10 * (placey - 1)) + c.width / 1000, c.width / 10 - c.width / 500, c.width / 10 - c.width / 500);
+    ctx.fillRect((c.width / sqw * (place - 1)) + c.width / 1000, (c.height / sqh * (placey - 1)) + c.width / 1000, c.width / (sqw*0.95) - c.width / 500, c.width / (sqw*0.95) - c.width / 500);
 }
 setTimeout(restOscript, 1500);
 
 function drawCirc(px,py,col){
 var width = 1;
 var runinter = setInterval(function(){
-if(width > 15){
+if(width > (num*1.5)){
 clearInterval(runinter);
 console.log("done");
 }
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
 width += 1;
-},200);
+},100);
 }
 
 function restOscript() {
-setInterval(function(){
+
 drawCirc(5,5,"#00FFFF");
-},1000);
+
 }
