@@ -82,6 +82,7 @@ cs.style = "background-color: rgb(31,31,31)";
 function theCircle(x,y,radius,color){
 var faded = blend_colors(color, '#111111', .5)
 var ctxs = cs.getContext("2d");
+ctxs.clearRect(0, 0, cs.width, cs.height);
 ctxs.beginPath();
 ctxs.arc(x, y, radius, 0, 2 * Math.PI);
 ctxs.strokeStyle = color;
@@ -168,7 +169,7 @@ width += 1;
 }
 
 function restOscript() {
-
+setInterval(function(){
 drawCirc(5,5,"#00FFFF");
-
+},1000);
 }
