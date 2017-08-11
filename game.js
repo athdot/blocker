@@ -38,8 +38,20 @@ c.style = "position: absolute; top: 100%; left: 50%; transform:translate(-50%,-1
 var num = sqh;
 }
 c.id = "canvas";
+c.onclick = "alert('click')"
 var ctx = c.getContext("2d");
 document.body.appendChild(c);
+c.addEventListener("click", function(e){
+var pos = getMousePos(canvas,e);
+    tUch(pos.x,pos.y);
+});
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+}
 var w = 1;
 var h = 1;
 while (w < (sqw+1)) {
@@ -199,4 +211,9 @@ function restOscript() {
 
 drawCirc(5,5,"#00FFFF");
 
+}
+function tUch(xh,yh){
+var pxperw = Math.floor(xh/(c.width/sqw))+1 ;
+var pxpery = Math.floor(yh/(c.height/sqh))+1;
+drawCirc(pxperw,pxpery,"#00FFFF");
 }
