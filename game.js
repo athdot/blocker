@@ -83,6 +83,24 @@ while (w < (sqw+1)) {
     var w = w + 1;
 }
 
+function colourSelect(){
+var color = Math.floor((Math.random() * 6) + 1);
+if(color == 1){
+var colo = "#FF9933";
+}else if(color == 2){
+var colo = "#F3F315";
+}else if(color == 3){
+var colo = "#32cd32";
+}else if(color == 4){
+var colo = "#00FFFF";
+}else if(color == 5){
+var colo = "#BC13FE";
+}else if(color == 6){
+var colo = "#FF073A";
+}
+return colo;
+}
+
 function blend_colors(color1, color2, percentage)
 {
     color1 = color1 || '#000000';
@@ -209,11 +227,11 @@ width += 1;
 
 function restOscript() {
 
-drawCirc(5,5,"#00FFFF");
+drawCirc(sqw/2,sqh/2,"#00FFFF");
 
 }
 function tUch(xh,yh){
 var pxperw = Math.floor(xh/(c.width/sqw))+1 ;
 var pxpery = Math.floor(yh/(c.height/sqh))+1;
-drawCirc(pxperw,pxpery,"#00FFFF");
+drawCirc(pxperw,pxpery,colourSelect());
 }
