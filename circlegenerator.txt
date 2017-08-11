@@ -1,5 +1,3 @@
-<body>
-<script>
 document.body.style.backgroundColor = "black";
 var c = document.createElement("canvas");
 if (window.innerWidth > window.innerHeight) {
@@ -84,7 +82,7 @@ cs.style = "background-color: rgb(31,31,31)";
 function theCircle(x,y,radius,color){
 var faded = blend_colors(color, '#111111', .5)
 var ctxs = cs.getContext("2d");
-ctxs.fillStyle = ("green");
+ctxs.fillStyle = ("#1f1f1f");
 ctxs.fillRect(0,0,cs.width, cs.height);
 ctxs.beginPath();
 ctxs.arc(x, y, radius, 0, 2 * Math.PI);
@@ -176,5 +174,3 @@ setInterval(function(){
 drawCirc(5,5,"#00FFFF");
 },2000);
 }
-</script>
-</body>
