@@ -29,12 +29,12 @@ var sqw = 10;
 }else{
 var sqw = 12;
 }
-var squaresize = window.innerHeight/sqh;
-var sqw = Math.floor(window.innerWidth/squaresize);
-    c.width = window.innerWidth;
-    c.height =  (window.innerWidth/sqw)*sqh;
+var squaresize = window.innerWidth/sqw;
+var sqh = Math.floor(window.innerHeight/squaresize);
+    c.width = ww;
+    c.height =  (ww/sqw)*sqh;
     var spread = (window.innerHeight-c.height)/2
-c.style = "position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
+c.style = "position: absolute; top: 100%; left: 50%; transform:translate(-50%,-100%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
 var num = sqh;
 }
 c.id = "canvas";
@@ -188,7 +188,6 @@ var width = 1;
 var runinter = setInterval(function(){
 if(width > (num*1.5)){
 clearInterval(runinter);
-console.log("done");
 }
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
