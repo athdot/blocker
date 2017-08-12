@@ -139,8 +139,6 @@ cs.style = "background-color: rgb(31,31,31)";
 function theCircle(x,y,radius,color){
 var faded = blend_colors(color, '#111111', .5)
 var ctxs = cs.getContext("2d");
-ctxs.fillStyle = ("#1f1f1f");
-ctxs.fillRect(0,0,cs.width, cs.height);
 ctxs.beginPath();
 ctxs.arc(x, y, radius, 0, 2 * Math.PI);
 ctxs.strokeStyle = color;
@@ -222,7 +220,7 @@ clearInterval(runinter);
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
 width += 1;
-},100);
+},50);
 }
 
 function restOscript() {
@@ -235,3 +233,8 @@ var pxperw = Math.floor(xh/(c.width/sqw))+1 ;
 var pxpery = Math.floor(yh/(c.height/sqh))+1;
 drawCirc(pxperw,pxpery,colourSelect());
 }
+setInterval(function(){
+var ctxs = cs.getContext("2d");
+ctxs.fillStyle = ("#1f1f1f");
+ctxs.fillRect(0,0,cs.width, cs.height);
+},50);
