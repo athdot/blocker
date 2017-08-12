@@ -220,7 +220,7 @@ clearInterval(runinter);
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
 width += 1;
-},50);
+},100);
 }
 
 function restOscript() {
@@ -237,4 +237,4 @@ setInterval(function(){
 var ctxs = cs.getContext("2d");
 ctxs.fillStyle = ("#1f1f1f");
 ctxs.fillRect(0,0,cs.width, cs.height);
-},50);
+},100);
