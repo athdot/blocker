@@ -207,7 +207,7 @@ function myColor(place, placey, colred, colgrn, colblu, opacit) {
     document.getElementById("green" + place + "-" + placey).innerHTML = colgrn;
     document.getElementById("opacity" + place + "-" + placey).innerHTML = opacit;
     ctx.fillStyle = "rgba(" + document.getElementById("red" + place + "-" + placey).innerHTML + "," + document.getElementById("green" + place + "-" + placey).innerHTML + "," + document.getElementById("blue" + place + "-" + placey).innerHTML + "," + document.getElementById("opacity" + place + "-" + placey).innerHTML + ")"
-    ctx.fillRect((c.width / sqw * (place - 1)) + c.width / 1000, (c.height / sqh * (placey - 1)) + c.width / 1000, c.width / (sqw*0.95) - c.width / 500, c.width / (sqw*0.95) - c.width / 500);
+    ctx.fillRect((c.width / sqw * (place - 1)) + c.width / 1000, (c.height / sqh * (placey - 1)) + c.width / 1000, c.width / sqw - c.width / 1000, c.width / sqw- c.width / 1000);
 }
 setTimeout(restOscript, 1500);
 
