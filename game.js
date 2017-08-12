@@ -201,11 +201,11 @@ function int_to_hex(num)
     return hex;
 }
 
-function myColor(place, placey, colred, colgrn, colblu, opacit) { 
+function myColor(place, placey, colred, colgrn, colblu, opacit) {
     document.getElementById("red" + place + "-" + placey).innerHTML = colred;
     document.getElementById("blue" + place + "-" + placey).innerHTML = colblu;
-    document.getElementById("green" + place + "-" + placey).innerHTML = colgrn;
-    document.getElementById("opacity" + place + "-" + placey).innerHTML = opacit;
+    document.getElementById("green" + place + "-" + placey).innerHTML = colgrn; 
+    document.getElementById("opacity" + place + "-" + placey).innerHTML = opacit; 
     ctx.fillStyle = "rgba(" + document.getElementById("red" + place + "-" + placey).innerHTML + "," + document.getElementById("green" + place + "-" + placey).innerHTML + "," + document.getElementById("blue" + place + "-" + placey).innerHTML + "," + document.getElementById("opacity" + place + "-" + placey).innerHTML + ")"
     ctx.fillRect((c.width / sqw * (place - 1)) + c.width / 1000, (c.height / sqh * (placey - 1)) + c.width / 1000, c.width / sqw - c.width / 1000, c.width / sqw- c.width / 1000);
 }
@@ -214,13 +214,13 @@ setTimeout(restOscript, 1500);
 function drawCirc(px,py,col){
 var width = 1;
 var runinter = setInterval(function(){
-if(width > (num*1.5)){
+if(width > (num*1.3)){ 
 clearInterval(runinter);
 }
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
-width += 1;
-},100);
+width += 0.125;
+},1);
 }
 
 function restOscript() {
@@ -237,4 +237,4 @@ setInterval(function(){
 var ctxs = cs.getContext("2d");
 ctxs.fillStyle = ("#1f1f1f");
 ctxs.fillRect(0,0,cs.width, cs.height);
-},100);
+},1);
