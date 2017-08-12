@@ -12,10 +12,10 @@ var sqh = 10;
 var sqh = 12;
 }
 var squaresize = window.innerHeight/sqh;
-var sqw = Math.floor(window.innerWidth/squaresize);
+var sqw = Math.floor(window.innerWidth/squaresize)-3;
     c.width = (window.innerHeight/sqh)*sqw;
     c.height = window.innerHeight;
-    var spread = (window.innerWidth-c.width)/2
+    var spread = (window.innerWidth-c.width)/2;
 c.style = "position: absolute; top: 50%; left: 100%; transform:translate(-100%,-50%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
 var num = sqw;
 } else {
@@ -30,10 +30,10 @@ var sqw = 10;
 var sqw = 12;
 }
 var squaresize = window.innerWidth/sqw;
-var sqh = Math.floor(window.innerHeight/squaresize);
+var sqh = Math.floor(window.innerHeight/squaresize)-2;
     c.width = ww;
     c.height =  (ww/sqw)*sqh;
-    var spread = (window.innerHeight-c.height)/2
+    var spread = (window.innerHeight-c.height)/2;
 c.style = "position: absolute; top: 100%; left: 50%; transform:translate(-50%,-100%); background-color: #1f1f1f; box-shadow: 0px 0px " + spread + (spread/2) + "px " + spread + "px rgb(100,100,100);";
 var num = sqh;
 }
