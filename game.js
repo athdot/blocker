@@ -219,13 +219,13 @@ clearInterval(runinter);
 }
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
-width += 0.125;
+width += 0.2;
 },1);
 }
 
 function restOscript() {
 
-drawCirc(sqw/2,sqh/2,"#00FFFF");
+drawCirc(sqw/2,sqh/2,colourSelect());
 
 }
 function tUch(xh,yh){
@@ -233,8 +233,3 @@ var pxperw = Math.floor(xh/(c.width/sqw))+1 ;
 var pxpery = Math.floor(yh/(c.height/sqh))+1;
 drawCirc(pxperw,pxpery,colourSelect());
 }
-setInterval(function(){
-var ctxs = cs.getContext("2d");
-ctxs.fillStyle = ("#1f1f1f");
-ctxs.fillRect(0,0,cs.width, cs.height);
-},1);
