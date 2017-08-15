@@ -219,7 +219,7 @@ clearInterval(runinter);
 }
 ctx.clearRect(0, 0, c.width, c.height);
 theCircle(px,py,width,col);
-width += 0.2;
+width += 0.175;
 },1);
 }
 
