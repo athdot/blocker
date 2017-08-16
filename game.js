@@ -1,4 +1,47 @@
-        document.body.style.backgroundColor = "black";
+//app-name: Blocker
+//author: Athdot Designs
+//requests{
+//internet: full-connection;
+//javascript: enabled;
+//video: enabled;
+//google-ads: enabled;
+//}
+//version: 2.1.6
+//doc: 8/16/2017;
+//state: paid;
+//download: https://google.play.com/dS1we4sGeerRAN31Fkabfs/download
+//proxy: 1.03.281.2221;
+//vpn-server: 39.1.34.22;
+//use: t|-|E.F0R[E.L|_|KE
+//contact: donotreply@athdot.com
+//.
+//.
+//.
+//.
+//.
+//.
+//load: play.qcep
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//END
+//--------------------------
+//
+//
+//
+//
+//--------------------------
+//HAH GET PRANKD U HACKRZ >=D        
+document.body.style.backgroundColor = "black";
         var c = document.createElement("canvas");
         if (window.innerWidth > window.innerHeight) {
             var wh = window.innerHeight;
